@@ -1,0 +1,18 @@
+[33meb5c353[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{0}: reset: moving to eb5c3530ab0538476e3773753f65bf8c98f7d51e
+[33md42b2ca[m HEAD@{1}: revert: Revert "开始用mac"
+[33meb5c353[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{2}: rebase (finish): returning to refs/heads/master
+[33meb5c353[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{3}: rebase (continue): 开始用mac
+[33m77af46e[m HEAD@{4}: rebase (start): checkout 77af46e3cca4aeb51a3eabde5653174745697bba
+[33mfb933a5[m HEAD@{5}: commit: 开始用mac
+[33mbe28bae[m HEAD@{6}: commit: 重新提交
+[33m35e0ce6[m HEAD@{7}: commit: 全部重新提交
+[33mb28830b[m HEAD@{8}: commit: 全部提交
+[33m6b0a81e[m HEAD@{9}: commit: day3
+[33m28b2a85[m HEAD@{10}: commit: day2
+[33ma223d8d[m HEAD@{11}: commit: day2
+[33mf0279bd[m HEAD@{12}: commit: day2
+[33mb68f320[m HEAD@{13}: commit: 新增员工开发day1
+[33m77af46e[m HEAD@{14}: Branch: renamed refs/heads/master to refs/heads/master
+[33m77af46e[m HEAD@{16}: Branch: renamed refs/heads/new-branch to refs/heads/master
+[33m77af46e[m HEAD@{18}: commit (initial): Initial commit - fresh start
+[33m6a608cc[m HEAD@{19}: commit (initial): 第一次初始化
