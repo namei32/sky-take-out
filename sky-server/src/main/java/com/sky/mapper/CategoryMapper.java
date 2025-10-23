@@ -22,6 +22,6 @@ public interface CategoryMapper {
 
     @Delete("Delete from category where id=#{id}")
     void delete(long id);
-    @Select("SELECT * from category where type=#{type}")
+
     List<Category> selectList(Integer type);
 }

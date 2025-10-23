@@ -22,9 +22,11 @@ import java.util.List;
 public class DishController {
     @Autowired
     DishService dishService;
+
+    //新增菜品同时保存口味
     @ApiOperation("新增菜品")
     @PostMapping
-    public Result  save(@RequestBody DishDTO dishDTO){
+    public Result save(@RequestBody DishDTO dishDTO) {
         dishService.saveWithFlavor(dishDTO);
         return Result.success();
     }
@@ -32,35 +34,40 @@ public class DishController {
 
     @GetMapping("/page")
     @ApiOperation("菜品分页查询")
-    public Result  pageQuery(DishPageQueryDTO dishPageQueryDTO){
-        PageResult pageResult  =  dishService.pageQuery(dishPageQueryDTO);
+    public Result pageQuery(DishPageQueryDTO dishPageQueryDTO) {
+        PageResult pageResult = dishService.pageQuery(dishPageQueryDTO);
         return Result.success(pageResult);
     }
 
     @DeleteMapping()
-    public Result  deleteByIds(@RequestParam List<Long> ids){
-        log.info("菜品删除",ids);
+    public Result deleteByIds(@RequestParam List<Long> ids) {
+        log.info("菜品删除", ids);
         dishService.deleteBatch(ids);
         return Result.success();
     }
 
     @PostMapping("/status/{status}")
-    public Result startOrStop(Long id,@PathVariable Integer status){
-        dishService.startOrStop(id,status);
+    public Result startOrStop(Long id, @PathVariable Integer status) {
+        dishService.startOrStop(id, status);
         return Result.success();
     }
 
     @GetMapping("/{id}")
-    public  Result<DishVO>queryById(@PathVariable Long id){
-        DishVO dishVO=dishService.queryById(id);
+    public Result<DishVO> queryById(@PathVariable Long id) {
+        DishVO dishVO = dishService.queryById(id);
         return Result.success(dishVO);
     }
 
     @PutMapping
-    public  Result  updateDish(@RequestBody DishDTO dishDTO){
+    public Result updateDish(@RequestBody DishDTO dishDTO) {
         dishService.update(dishDTO);
         return Result.success();
     }
 
+    @GetMapping("/list")
+    public Result<List<Dish>> List(Long categoryId) {
+        List<Dish> list = dishService.list(categoryId);
+        return Result.success(list);
+    }
 
 }

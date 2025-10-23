@@ -53,7 +53,14 @@
             </if>
         </where>
 
-
-
     </select>
+    <select id="selectList" resultType="com.sky.entity.Category">
+        select * from category <where>
+        <if test="type !=null and type !=''">
+            and type= #{type}
+        </if>
+    </where>
+    </select>
+
+
 </mapper>

@@ -43,7 +43,28 @@
         WHERE id = #{id}
     </update>
     <select id="pageQuery" resultType="com.sky.entity.Setmeal" parameterType="com.sky.dto.SetmealPageQueryDTO">
-        select * from setmeal
-
+        select
+        s.*,c.name categoryName
+        from
+        setmeal s
+        left join
+        category c
+        on
+        s.category_id = c.id
+        <where>
+            <if test="name != null">
+                and s.name like concat('%',#{name},'%')
+            </if>
+            <if test="status != null">
+                and s.status = #{status}
+            </if>
+            <if test="categoryId != null">
+                and s.category_id = #{categoryId}
+            </if>
+        </where>
+        order by s.create_time desc
+    </select>
+    <select id="getBySetmealId" resultType="com.sky.vo.DishItemVO">
+        select b.name,b.image,b.description,a.copies from setmeal_dish a left join dish b on a.dish_id=b.id where a.setmeal_id=#{setmealId}
     </select>
 </mapper>
