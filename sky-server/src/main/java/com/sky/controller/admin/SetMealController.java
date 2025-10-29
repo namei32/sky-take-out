@@ -10,6 +10,9 @@ import com.sky.vo.SetmealVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +26,7 @@ public class SetMealController {
 
     @PostMapping
     @ApiOperation("新增套餐")
+    @CacheEvict(cacheNames = "setmealCache",key = "#setmealDTO.categoryId")
     public Result save(@RequestBody  SetmealDTO setmealDTO){
         setMealService.save(setmealDTO);
         return Result.success();
@@ -30,6 +34,7 @@ public class SetMealController {
     }
 
     @PutMapping
+    @CacheEvict(cacheNames = "setmealCache",allEntries = true)
     public Result updateMeal(@RequestBody  SetmealDTO setmealDTO){
         setMealService.updateMeal(setmealDTO);
         return Result.success();
@@ -41,12 +46,14 @@ public class SetMealController {
     }
 
     @PostMapping("/status/{status}")
+    @CacheEvict(cacheNames = "setmealCache",allEntries = true)
     public Result startOrStop(@PathVariable Integer status,Long id){
         setMealService.startOrStop(status,id);
         return Result.success();
     }
 
     @DeleteMapping
+    @CacheEvict(cacheNames = "setmealCache",allEntries = true)
     public Result deleteByids(@RequestParam List<Long> ids){
         log.info("套餐删除",ids);
         setMealService.deleteByIds(ids);
